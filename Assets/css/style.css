@@ -6,6 +6,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Top Bar */
 .top-bar {
     display: flex;
     flex-direction: row;
@@ -23,6 +24,27 @@ a {
     padding-right: 10px;
 }
 
+/* Button Styling */
+button {
+    color: white;
+    font-size: 20px;
+    background-color: rgb(55, 0, 128);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 15px 25px;
+}
+
+button:hover {
+    background-color: rgb(192, 86, 219);
+}
+
+/* Hide Class */
+.hide {
+    display: none;
+}
+
+
 /* main {
     display: flex;
     flex-direction: column;
@@ -33,6 +55,7 @@ a {
     padding-right: 20%;
 } */
 
+/* Start Screen Styling */
 .start-screen {
     display: flex;
     flex-direction: column;
@@ -49,16 +72,18 @@ a {
     line-height: 24px;
 }
 
-button {
-    color: white;
-    font-size: 20px;
-    background-color: rgb(55, 0, 128);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    padding: 15px 25px;
+/* Quiz Screen Styling */
+.question-screen {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20%;
+    padding-right: 10%;
 }
 
-button:hover {
-    background-color: rgb(192, 86, 219);
+ul {
+    list-style-type: none;
 }
+
+/* Final Score Screen */
+
+/* High Scores Screen */
