@@ -1,3 +1,11 @@
+function startQuiz() {
+  let startButton = "";
+}
+
+startButton.addEventListener.on("click", startQuiz());
+
+function runQuestions()
+
 let questions = [
   {
     title: 'Commonly used data types DO NOT include:',
