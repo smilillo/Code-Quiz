@@ -1,5 +1,8 @@
+let startButton = document.querySelector(".start-button");
+let timerEl = doscument.querySelector(".timer");
+let secondsLeft = 75;
+
 function startQuiz() {
-  let startButton = "";
   // hide start screen
   let startScreenEl = document.getElementById('start-screen');
   startScreenEl.setAttribute('class', 'hide');
@@ -7,7 +10,7 @@ function startQuiz() {
   questionsEl.removeAttribute('class', 'hide');
 }
 
-startButton.addEventListener.on("click", startQuiz());
+startButton.addEventListener("click", startQuiz());
 
 function runQuestions() {
 
@@ -39,6 +42,20 @@ let questions = [
   }
 ]
 }
+
+// Set Timer
+function setTimer() {
+    let timerInterval = setInterval(function() {
+        secondsLeft --;
+        timerEl.textContent = secondsLeft;
+
+        if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            finalScore();
+        }
+    }, 1000);
+}
+
 
 function finalScore () {
     let timerCount = timerCount.value;
