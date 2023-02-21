@@ -3,13 +3,14 @@ let timerEl = document.querySelector(".timer");
 let secondsLeft = 75;
 let startScreenEl = document.querySelector(".start-screen");
 
+let mainEl = document.querySelector("main");
 let questionsEl = document.querySelector(".question-screen");
 let questionTextEl = document.querySelector(".question");
 let answersEl = document.querySelector(".choices");
-// let optionABtn = document.querySelector(".btnA");
-// let optionBBtn = document.querySelector(".btnB");
-// let optionCBtn = document.querySelector(".btnC");
-// let optionDBtn = document.querySelector(".btnD");
+let optionABtn = document.querySelector(".btnA");
+let optionBBtn = document.querySelector(".btnB");
+let optionCBtn = document.querySelector(".btnC");
+let optionDBtn = document.querySelector(".btnD");
 
 let finalScoreScreenEl = document.querySelector(".final-score-screen");
 let finalScoreEl = document.querySelector(".final-score")
@@ -45,14 +46,16 @@ let questionsArr = [
       choices: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'],
       answer: 'console.log',
     }
-  ]
+]
+
+// startButton.addEventListener("click", startQuiz());
 
 // Hide Start Screen and Show Questions after
 function startQuiz() {
   // hide start screen
-  startScreenEl.setAttribute('class', 'hide');
+  startScreenEl.setAttribute('class', 'hide')
   // un-hide questions section
-  questionsEl.removeAttribute('class', 'hide');
+  mainEl.removeAttribute('class', 'hide');
 }
 
 // Set Timer
@@ -94,4 +97,3 @@ function finalScore () {
 
 //   localStorage.setItem("highScore", JSON.stringify(highScore))
 
-startButton.addEventListener("click", startQuiz());
