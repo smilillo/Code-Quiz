@@ -13,9 +13,9 @@ To take the quiz first click the start quiz button to present the first question
 https://smilillo.github.io/Code-Quiz/
 
 ### Screenshot
-![_Users_sofiamilillo_Documents_bootcampOSU_Code-Quiz_index html](https://user-images.githubusercontent.com/121981411/220517176-aff82fda-9b7b-4855-8c1e-648a10014d11.png)
-![_Users_sofiamilillo_Documents_bootcampOSU_Code-Quiz_index html (1)](https://user-images.githubusercontent.com/121981411/220517214-c8b8f61e-2472-4a67-8c03-3acecc8b67c3.png)
-<img width="1170" alt="Screen Shot 2023-02-21 at 10 51 24 PM" src="https://user-images.githubusercontent.com/121981411/220517360-e8975269-f42f-4a0e-955e-473058cebbbe.png">
+<img width="1174" alt="Start screen of Coding Quiz" src="https://user-images.githubusercontent.com/121981411/220517753-be19e1c4-8bf8-45d5-8926-eae6f0e06b38.png">
+<img width="1172" alt="First quiz question with correct answer highlighted using hover" src="https://user-images.githubusercontent.com/121981411/220517608-a05e9b7f-fa14-4140-99b3-124450ea0175.png">
+<img width="1170" alt="Second quiz question" src="https://user-images.githubusercontent.com/121981411/220517360-e8975269-f42f-4a0e-955e-473058cebbbe.png">
 
 
 ## License
