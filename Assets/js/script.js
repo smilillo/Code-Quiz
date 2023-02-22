@@ -79,16 +79,17 @@ function startQuiz() {
 }
 
 function runQuestions() {
-    for ( let i = 0; i < questionsArr[questionIndex].title; i++) {
-        questionTextEl.textContent = questionsArr[questionIndex].title[i];
-    }
-    for (let i = 0; i < questionsArr[questionIndex].choices; i++) {
+    // for ( let i = 0; i < questionsArr[questionIndex].title.length; i++) {
+        questionTextEl.textContent = questionsArr[questionIndex].title;
+    // }
+    for (let i = 0; i < questionsArr[questionIndex].choices.length; i++) {
         let choiceBtn = document.createElement("button");
         choiceBtn.textContent = questionsArr[questionIndex].choices[i];
         choiceBtn.setAttribute("value", questionsArr[questionIndex].choices[i]);
         choiceBtn.addEventListener("click", checkAnswer);
-        answersEl.appendChild(button);
+        answersEl.appendChild(choiceBtn);
     }
+
 }
 
 
