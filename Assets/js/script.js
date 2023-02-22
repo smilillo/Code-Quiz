@@ -84,7 +84,7 @@ function runQuestions() {
         let choiceBtn = document.createElement("button");
         choiceBtn.textContent = questionsArr[questionIndex].choices[i];
         // choiceBtn.setAttribute("value", questionsArr[questionIndex].choices[i]);
-        choiceBtn.id = ( i + 1).toString();
+        choiceBtn.id = (i + 1).toString();
         choiceBtn.addEventListener("click", checkAnswer);
         answersEl.append(choiceBtn);
     }
