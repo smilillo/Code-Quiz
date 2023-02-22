@@ -8,10 +8,7 @@ let questionsEl = document.querySelector(".question-screen");
 let questionTextEl = document.querySelector(".question");
 let questionIndex = 0;
 let answersEl = document.querySelector(".choices");
-// let optionABtn = document.querySelector(".btnA");
-// let optionBBtn = document.querySelector(".btnB");
-// let optionCBtn = document.querySelector(".btnC");
-// let optionDBtn = document.querySelector(".btnD");
+let answer = document.querySelector("#answer");
 
 let finalScoreScreenEl = document.querySelector(".final-score-screen");
 let finalScoreEl = document.querySelector(".final-score")
@@ -27,27 +24,27 @@ let questionsArr = [
     {
       title: 'Commonly used data types DO NOT include:',
       choices: ['strings', 'booleans', 'alerts', 'numbers'],
-      answer: 'alerts',
+      answer: '2',
     },
     {
       title: 'The condition in an if / else statement is enclosed within ____.',
       choices: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
-      answer: 'parentheses',
+      answer: '2',
     },
     {
       title: 'Arrays in JavaScript can be used to store ____.',
       choices: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
-      answer: 'all of the above',
+      answer: '3',
     },
     {
       title: 'String values must be enclosed within ____ when being assigned to variables.',
       choices: ['commas', 'curly brackets', 'quotes', 'parentheses'],
-      answer: 'quotes',
+      answer: '2',
     },
     {
       title: 'A very useful tool used during development and debugging for printing content to the debugger is ____.',
       choices: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'],
-      answer: 'console.log',
+      answer: '3',
     }
 ];
 
@@ -62,7 +59,7 @@ function setTimer() {
 
         if(secondsLeft === 0 || questionIndex === questionsArr.length) {
             clearInterval(timerInterval);
-            finalScore();
+            // finalScore();
         }
     }, 1000);
 }
@@ -73,11 +70,12 @@ function startQuiz() {
   startScreenEl.setAttribute("class", "hide");
   // un-hide questions section
   mainEl.removeAttribute("class", "hide");
-  questionIndex = 0;
+//   questionIndex = 0;
   setTimer();
   runQuestions();
 }
 
+// Present Questions after Click Event
 function runQuestions() {
     // for ( let i = 0; i < questionsArr[questionIndex].title.length; i++) {
         questionTextEl.textContent = questionsArr[questionIndex].title;
@@ -85,19 +83,25 @@ function runQuestions() {
     for (let i = 0; i < questionsArr[questionIndex].choices.length; i++) {
         let choiceBtn = document.createElement("button");
         choiceBtn.textContent = questionsArr[questionIndex].choices[i];
-        choiceBtn.setAttribute("value", questionsArr[questionIndex].choices[i]);
+        // choiceBtn.setAttribute("value", questionsArr[questionIndex].choices[i]);
+        choiceBtn.id = ( i + 1).toString();
         choiceBtn.addEventListener("click", checkAnswer);
-        answersEl.appendChild(choiceBtn);
+        answersEl.append(choiceBtn);
     }
-
 }
 
 
-function checkAnswer() {
-    if (choiceBtn.value !== questionsArr[questionIndex].answer) {
-        secondsLeft -= 10;
+function checkAnswer(event) {
+    let userAnswer = event.target.id;
+    if (userAnswer === questionsArr[questionIndex].answer) {
+        answer.textContent = "Correct!";
     }
     else {
+        answer.textContent = "Incorrect";
+        secondsLeft -= 10;
+    }
+    questionIndex++;
+    if (questionIndex < questionsArr.length) {
         runQuestions();
     }
 }
