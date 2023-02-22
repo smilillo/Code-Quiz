@@ -19,7 +19,7 @@ let submitButton = document.querySelector(".submit-button");
 
 let highScoreScreen = document.querySelector(".high-scores-screen");
 let highscoreListEl = document.querySelector(".score-list");
-let highscoreList = [];
+let highscoreArr = [];
 let goBackBtn = document.querySelector(".go-back-button");
 let clearScoresBtn = document.querySelector(".clear-scores");
 
@@ -52,7 +52,7 @@ let questionsArr = [
 ];
 
 
-// startButton.addEventListener("click", startQuiz());
+startButton.addEventListener("click", startQuiz);
 
 // Set Timer
 function setTimer() {
@@ -60,7 +60,7 @@ function setTimer() {
         secondsLeft --;
         timerEl.textContent = secondsLeft;
 
-        if(secondsLeft === 0 || questionCount === questionsArr.length) {
+        if(secondsLeft === 0 || questionIndex === questionsArr.length) {
             clearInterval(timerInterval);
             finalScore();
         }
@@ -70,9 +70,9 @@ function setTimer() {
 // Hide Start Screen and Show Questions after
 function startQuiz() {
   // hide start screen
-  startScreenEl.setAttribute('class', 'hide')
+  startScreenEl.setAttribute("class", "hide");
   // un-hide questions section
-  mainEl.removeAttribute('class', 'hide');
+  mainEl.removeAttribute("class", "hide");
   questionIndex = 0;
   setTimer();
   runQuestions();
@@ -83,9 +83,21 @@ function runQuestions() {
         questionTextEl.textContent = questionsArr[questionIndex].title[i];
     }
     for (let i = 0; i < questionsArr[questionIndex].choices; i++) {
-        let button = document.createElement("button");
-        button.textContent = questionsArr[questionIndex].choices[i];
+        let choiceBtn = document.createElement("button");
+        choiceBtn.textContent = questionsArr[questionIndex].choices[i];
+        choiceBtn.setAttribute("value", questionsArr[questionIndex].choices[i]);
+        choiceBtn.addEventListener("click", checkAnswer);
         answersEl.appendChild(button);
+    }
+}
+
+
+function checkAnswer() {
+    if (choiceBtn.value !== questionsArr[questionIndex].answer) {
+        secondsLeft -= 10;
+    }
+    else {
+        runQuestions();
     }
 }
 
@@ -99,8 +111,20 @@ function finalScore () {
     submitButton.addEventListener("click", function () {
 
     })
-
 }
+
+function viewHighScores() {
+    let high
+}
+
+goBackBtn.addEventListener("click", function() {
+    startScreenEl.removeAttribute("class", "hide");
+    highScoreScreen.setAttribute("class", "hide");
+})
+
+clearScoresBtn.addEventListener("click", function() {
+    localStorage.removeItem("");
+})
 
 // object for high scores to store to local storage
 //   let highScore = {
