@@ -1,8 +1,10 @@
+// Start Quiz Screen
 let startButton = document.querySelector(".start-button");
 let timerEl = document.querySelector(".timer");
 let secondsLeft = 75;
 let startScreenEl = document.querySelector(".start-screen");
 
+// Quiz Question Screen
 let mainEl = document.querySelector("main");
 let questionsEl = document.querySelector(".question-screen");
 let questionTextEl = document.querySelector(".question");
@@ -10,10 +12,12 @@ let questionIndex = 0;
 let answersEl = document.querySelector(".choices");
 let answer = document.querySelector("#answer");
 
+// Final Score Screen
 let finalScoreScreenEl = document.querySelector(".final-score-screen");
 let finalScoreEl = document.querySelector(".final-score")
 let submitButton = document.querySelector(".submit-button");
 
+// High Score Screen
 let highScoreScreen = document.querySelector(".high-scores-screen");
 let highscoreListEl = document.querySelector(".score-list");
 let highscoreArr = [];
@@ -56,21 +60,25 @@ function setTimer() {
     let timerInterval = setInterval(function() {
         secondsLeft --;
         timerEl.textContent = secondsLeft;
-
-        if(secondsLeft === 0 || questionIndex === questionsArr.length) {
+        
+        if(secondsLeft === 0) {
             clearInterval(timerInterval);
-            // finalScore();
+            alert("Time is up!");
+            endGame();
+        } else if(questionIndex === questionsArr.length) {
+            clearInterval(timerInterval);
+            endGame();
         }
     }, 1000);
 }
 
-// Hide Start Screen and Show Questions after
+// Hide Start Screen, Show Questions, Start Timer
 function startQuiz() {
   // hide start screen
   startScreenEl.setAttribute("class", "hide");
   // un-hide questions section
   mainEl.removeAttribute("class", "hide");
-//   questionIndex = 0;
+
   setTimer();
   runQuestions();
 }
@@ -82,14 +90,13 @@ function runQuestions() {
     for (let i = 0; i < questionsArr[questionIndex].choices.length; i++) {
         let choiceBtn = document.createElement("button");
         choiceBtn.textContent = questionsArr[questionIndex].choices[i];
-        // choiceBtn.setAttribute("value", questionsArr[questionIndex].choices[i]);
         choiceBtn.id = (i + 1).toString();
         choiceBtn.addEventListener("click", checkAnswer);
         answersEl.append(choiceBtn);
     }
 }
 
-
+// Check if Answer Cllcked Matches Correct Answer
 function checkAnswer(event) {
     let userAnswer = event.target.id;
     if (userAnswer === questionsArr[questionIndex].answer) {
@@ -100,36 +107,42 @@ function checkAnswer(event) {
         secondsLeft -= 10;
     }
     questionIndex++;
+
     if (questionIndex < questionsArr.length) {
         runQuestions();
-    }
+    } else endGame();
 }
 
-
-function finalScore () {
-    clearInterval(timerInterval);
-    questionsEl.setAttribute("class", "hide");
+// Hide Questions and Show Final Score Screen
+function endGame () {
+    clearInterval(setTimer);
+    mainEl.setAttribute("class", "hide");
     finalScoreScreenEl.removeAttribute("class", "hide");
     finalScoreEl.textContent = "Your final score is " + secondsLeft + ". Enter your initials below: "
-
-    submitButton.addEventListener("click", function () {
-
-    })
 }
 
-function viewHighScores() {
-    let high
-}
+    // submitButton.addEventListener("click", function () {
 
+    // })
+
+
+// High Scores List 
+// function viewHighScores() {
+
+// }
+
+// Return to Start Screen when Go Back is Clicked
 goBackBtn.addEventListener("click", function() {
     startScreenEl.removeAttribute("class", "hide");
     highScoreScreen.setAttribute("class", "hide");
 })
 
+// Clear High Scores List
 clearScoresBtn.addEventListener("click", function() {
     localStorage.removeItem("");
 })
 
+// Event Listener for Start Button, Starts Quiz
 startButton.addEventListener("click", startQuiz);
 
 // object for high scores to store to local storage
