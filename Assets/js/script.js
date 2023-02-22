@@ -14,7 +14,8 @@ let answer = document.querySelector("#answer");
 
 // Final Score Screen
 let finalScoreScreenEl = document.querySelector(".final-score-screen");
-let finalScoreEl = document.querySelector(".final-score")
+let finalScoreEl = document.querySelector(".final-score");
+let initialsInput = document.querySelector(".initials-input");
 let submitButton = document.querySelector(".submit-button");
 
 // High Score Screen
@@ -51,9 +52,6 @@ let questionsArr = [
       answer: '4',
     }
 ];
-
-
-
 
 // Set Timer
 function setTimer() {
@@ -121,15 +119,8 @@ function endGame () {
     finalScoreEl.textContent = "Your final score is " + secondsLeft + ". Enter your initials below: "
 }
 
-    // submitButton.addEventListener("click", function () {
-
-    // })
-
-
-// High Scores List 
-// function viewHighScores() {
-
-// }
+// Run Submit Score on Click
+// submitButton.addEventListener("click", )
 
 // Return to Start Screen when Go Back is Clicked
 goBackBtn.addEventListener("click", function() {
