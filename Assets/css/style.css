@@ -81,7 +81,7 @@ main {
     padding-right: 10%;
 }
 
-ul {
+.choices {
     list-style-type: none;
     display: flex;
     flex-direction: column;
