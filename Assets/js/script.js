@@ -6,17 +6,20 @@ let startScreenEl = document.querySelector(".start-screen");
 let mainEl = document.querySelector("main");
 let questionsEl = document.querySelector(".question-screen");
 let questionTextEl = document.querySelector(".question");
+let questionIndex = 0;
 let answersEl = document.querySelector(".choices");
-let optionABtn = document.querySelector(".btnA");
-let optionBBtn = document.querySelector(".btnB");
-let optionCBtn = document.querySelector(".btnC");
-let optionDBtn = document.querySelector(".btnD");
+// let optionABtn = document.querySelector(".btnA");
+// let optionBBtn = document.querySelector(".btnB");
+// let optionCBtn = document.querySelector(".btnC");
+// let optionDBtn = document.querySelector(".btnD");
 
 let finalScoreScreenEl = document.querySelector(".final-score-screen");
 let finalScoreEl = document.querySelector(".final-score")
 let submitButton = document.querySelector(".submit-button");
 
 let highScoreScreen = document.querySelector(".high-scores-screen");
+let highscoreListEl = document.querySelector(".score-list");
+let highscoreList = [];
 let goBackBtn = document.querySelector(".go-back-button");
 let clearScoresBtn = document.querySelector(".clear-scores");
 
@@ -46,17 +49,10 @@ let questionsArr = [
       choices: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'],
       answer: 'console.log',
     }
-]
+];
+
 
 // startButton.addEventListener("click", startQuiz());
-
-// Hide Start Screen and Show Questions after
-function startQuiz() {
-  // hide start screen
-  startScreenEl.setAttribute('class', 'hide')
-  // un-hide questions section
-  mainEl.removeAttribute('class', 'hide');
-}
 
 // Set Timer
 function setTimer() {
@@ -64,24 +60,41 @@ function setTimer() {
         secondsLeft --;
         timerEl.textContent = secondsLeft;
 
-        if(secondsLeft === 0) {
+        if(secondsLeft === 0 || questionCount === questionsArr.length) {
             clearInterval(timerInterval);
             finalScore();
         }
     }, 1000);
 }
 
-function runQuestions() {
-    
-    }
+// Hide Start Screen and Show Questions after
+function startQuiz() {
+  // hide start screen
+  startScreenEl.setAttribute('class', 'hide')
+  // un-hide questions section
+  mainEl.removeAttribute('class', 'hide');
+  questionIndex = 0;
+  setTimer();
+  runQuestions();
+}
 
+function runQuestions() {
+    for ( let i = 0; i < questionsArr[questionIndex].title; i++) {
+        questionTextEl.textContent = questionsArr[questionIndex].title[i];
+    }
+    for (let i = 0; i < questionsArr[questionIndex].choices; i++) {
+        let button = document.createElement("button");
+        button.textContent = questionsArr[questionIndex].choices[i];
+        answersEl.appendChild(button);
+    }
+}
 
 
 function finalScore () {
     clearInterval(timerInterval);
     questionsEl.setAttribute("class", "hide");
     finalScoreScreenEl.removeAttribute("class", "hide");
-    finalScore.textContent = "Your final score is " + secondsLeft + ". Enter your initials below: "
+    finalScoreEl.textContent = "Your final score is " + secondsLeft + ". Enter your initials below: "
 
     submitButton.addEventListener("click", function () {
 
