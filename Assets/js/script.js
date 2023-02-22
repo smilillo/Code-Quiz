@@ -52,7 +52,7 @@ let questionsArr = [
 ];
 
 
-startButton.addEventListener("click", startQuiz);
+
 
 // Set Timer
 function setTimer() {
@@ -126,6 +126,8 @@ goBackBtn.addEventListener("click", function() {
 clearScoresBtn.addEventListener("click", function() {
     localStorage.removeItem("");
 })
+
+startButton.addEventListener("click", startQuiz);
 
 // object for high scores to store to local storage
 //   let highScore = {
